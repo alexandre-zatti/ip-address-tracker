@@ -3,7 +3,7 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 
-const rubik = Rubik({subsets: ["latin"], weight: ["400", "500", "700"]});
+const rubik = Rubik({subsets: ["latin"], weight: ["400", "500", "600", "700", "800"]});
 
 export const metadata: Metadata = {
   title: "Ip Adress Tracker",
