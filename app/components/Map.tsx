@@ -14,7 +14,7 @@ export const Map = () => {
   return (
     <>
       {ipData.location && (
-        <MapContainer center={[ipData.location.lat, ipData.location.lng]} zoom={15} scrollWheelZoom={false}
+        <MapContainer center={[ipData.location.lat, ipData.location.lng]} zoom={15}
                       zoomControl={false} key={`${ipData.location.lat}-${ipData.location.lng}`}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
