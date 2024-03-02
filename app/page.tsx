@@ -1,8 +1,10 @@
 import { IpSearch } from "@/app/components/IpSearch";
 import { IpInfoContainer } from "@/app/components/IpInfoContainer";
 import { IpDataProvider } from "@/app/components/IpDataProvider";
+import { Map } from "@/app/components/Map";
 
 export default async function Home() {
+
   return (
     <main className="min-h-screen grid grid-rows-[300px_auto] grid-cols-1">
       <IpDataProvider>
@@ -11,7 +13,7 @@ export default async function Home() {
           <IpSearch/>
           <IpInfoContainer/>
         </div>
-        <div className="bg-white"></div>
+        <Map/>
       </IpDataProvider>
     </main>
   );
