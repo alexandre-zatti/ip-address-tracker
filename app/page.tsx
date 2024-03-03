@@ -1,7 +1,7 @@
 import { IpSearch } from "@/app/components/IpSearch";
 import { IpInfoContainer } from "@/app/components/IpInfoContainer";
 import { IpDataProvider } from "@/app/components/IpDataProvider";
-import { Map } from "@/app/components/Map";
+import { IpMapLocation } from "@/app/components/IpMapLocation";
 
 export default async function Home() {
 
@@ -13,7 +13,7 @@ export default async function Home() {
           <IpSearch/>
           <IpInfoContainer/>
         </div>
-        <Map/>
+        <IpMapLocation/>
       </IpDataProvider>
     </main>
   );

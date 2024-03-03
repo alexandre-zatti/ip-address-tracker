@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css'
 import { useContext } from "react";
 import { IpDataContext } from "@/app/components/IpDataProvider";
 
-export const Map = () => {
+export const IpMapLocation = () => {
   const {ipData} = useContext(IpDataContext)
 
   const marker = new Icon({iconUrl: "./icon-location.svg", iconSize: [38, 48]})
