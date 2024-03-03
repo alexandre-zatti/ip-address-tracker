@@ -13,14 +13,14 @@ export const IpMapLocation = () => {
 
   return (
     <>
-      {ipData.location && (
-        <MapContainer center={[ipData.location.lat, ipData.location.lng]} zoom={15}
-                      zoomControl={false} key={`${ipData.location.lat}-${ipData.location.lng}`}>
+      {ipData.latitude && (
+        <MapContainer center={[ipData.latitude, ipData.longitude]} zoom={15}
+                      zoomControl={false} key={`${ipData.ip}`}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={[ipData.location.lat, ipData.location.lng]} icon={marker}>
+          <Marker position={[ipData.latitude, ipData.longitude]} icon={marker}>
           </Marker>
         </MapContainer>
       )}

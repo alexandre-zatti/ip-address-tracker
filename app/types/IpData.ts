@@ -1,22 +1,28 @@
 export type IpData = {
   ip: string;
-  location: {
-    country: string;
-    region: string;
-    city: string;
-    lat: number;
-    lng: number;
-    postalCode: string;
-    timezone: string;
-    geonameId: number;
-  };
-  domains: string[];
-  as: {
-    asn: number;
-    name: string;
-    route: string;
-    domain: string;
-    type: string;
-  };
-  isp: string;
+  is_eu: boolean;
+  city: string;
+  region: string;
+  region_code: string;
+  region_type: string;
+  country_name: string;
+  country_code: string;
+  continent_name: string;
+  continent_code: string;
+  latitude: number;
+  longitude: number;
+  postal: string;
+  calling_code: string;
+  flag: string;
+  emoji_flag: string;
+  emoji_unicode: string;
+  asn: Asn;
+};
+
+type Asn = {
+  asn: string;
+  name: string;
+  domain: string | null;
+  route: string;
+  type: string;
 };

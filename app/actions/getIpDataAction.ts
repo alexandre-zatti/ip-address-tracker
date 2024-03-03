@@ -10,7 +10,7 @@ export const getIpDataAction = async (_prevState: any, formData: FormData) => {
 
   try {
     const response = await fetch(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.IP_API_KEY}&ipAddress=${formData.get('ip')}`
+      `https://api.ipdata.co/${formData.get('ip')}?api-key=${process.env.IP_API_KEY}`
     )
     return {
       data: await response.json() as IpData,
