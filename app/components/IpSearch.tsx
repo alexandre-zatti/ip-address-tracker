@@ -6,8 +6,8 @@ import { useContext, useEffect, useTransition } from "react";
 import { IpDataContext } from "@/app/components/IpDataProvider";
 
 export const IpSearch = () => {
-  const {setIpData} = useContext(IpDataContext)
-  const [isPending, startTransition] = useTransition();
+  const {setIpData, setIsPending, isPending} = useContext(IpDataContext)
+  const [_, startTransition] = useTransition();
   const [state, formAction] = useFormState(getIpDataAction, {
     data: null,
     error: null
@@ -19,19 +19,21 @@ export const IpSearch = () => {
     formData.set('ip', '')
 
     startTransition(() => {
+      setIsPending(true)
       formAction(formData);
     });
-  }, [formAction])
+  }, [formAction, setIsPending])
 
   useEffect(() => {
     if (state.data) {
       setIpData(state.data)
+      setIsPending(false)
     }
-
-  }, [state, setIpData]);
+  }, [state, setIpData, setIsPending]);
 
   const handleSubmit = (event: FormData) => {
     startTransition(() => {
+      setIsPending(true)
       formAction(event);
     });
   }
@@ -40,7 +42,7 @@ export const IpSearch = () => {
   return (
     <form className="flex w-11/12 h-12 md:max-w-xl md:h-14" action={handleSubmit}>
       <input name='ip' className="w-full rounded-l-xl text-lg p-4 focus:outline-none hover:cursor-pointer"
-             aria-label={'ip search name'} placeholder="Search for any IP adress"/>
+             aria-label={'ip search name'} placeholder="Search for any IP adress..."/>
       <button type='submit' className="w-16 h-full flex justify-center items-center bg-black rounded-r-2xl"
               aria-disabled={isPending} aria-label={'ip search button'}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3}

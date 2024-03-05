@@ -1,9 +1,17 @@
 import { IpSearch } from "@/app/components/IpSearch";
 import { IpInfoContainer } from "@/app/components/IpInfoContainer";
 import { IpDataProvider } from "@/app/components/IpDataProvider";
-import { IpMapLocation } from "@/app/components/IpMapLocation";
+import dynamic from "next/dynamic";
+import Loading from "@/app/components/Loading";
 
-export default async function Home() {
+export default function Home() {
+  const Map = dynamic(
+    () => import("@/app/components/IpMapLocation"),
+    {
+      loading: () => <Loading/>,
+      ssr: false
+    }
+  )
 
   return (
     <main className="min-h-screen grid grid-rows-[300px_auto] grid-cols-1">
@@ -13,7 +21,7 @@ export default async function Home() {
           <IpSearch/>
           <IpInfoContainer/>
         </div>
-        <IpMapLocation/>
+        <Map/>
       </IpDataProvider>
     </main>
   );
