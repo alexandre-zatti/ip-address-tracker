@@ -2,8 +2,13 @@
 
 import { useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { IpData } from "@/app/types/IpData";
 
-export const IpSearch = () => {
+type IpSearchProps = {
+  ipDataRequest: { data: IpData; error: null; } | { data: null; error: any; }
+}
+
+export const IpSearch = ({ipDataRequest}: IpSearchProps) => {
   const router = useRouter()
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition()
@@ -18,7 +23,8 @@ export const IpSearch = () => {
   return (
     <form className="flex w-11/12 h-12 md:max-w-xl md:h-14" action={handleSubmit}>
       <input name='ip' className="w-full rounded-l-xl text-lg p-4 focus:outline-none hover:cursor-pointer"
-             aria-label={'ip search name'} placeholder="Search for any IP adress..."/>
+             aria-label={'ip search name'} placeholder="Search for any IP adress..."
+             defaultValue={ipDataRequest.data?.ip}/>
       <button type='submit' className="w-16 h-full flex justify-center items-center bg-black rounded-r-2xl"
               aria-label={'ip search button'} aria-disabled={isPending}>
         {isPending ? (

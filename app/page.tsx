@@ -3,6 +3,7 @@ import { IpInfoContainer } from "@/app/components/IpInfoContainer";
 import dynamic from "next/dynamic";
 import Loading from "@/app/components/Loading";
 import { IpData } from "@/app/types/IpData";
+import { headers } from "next/headers";
 
 
 const LeafletMap = dynamic(
@@ -45,14 +46,15 @@ const getIpData = async (ip: string) => {
 }
 
 export default async function Home({searchParams}: HomeProps) {
-
-  const ipData = await getIpData(searchParams.ip ?? '40.89.244.232')
+  const FALLBACK_IP_ADDRESS = '8.8.8.8'
+  const forwardedFor = headers().get('x-forwarded-for')
+  const ipData = await getIpData(searchParams.ip ?? (forwardedFor ?? FALLBACK_IP_ADDRESS))
 
   return (
     <main className="min-h-screen grid grid-rows-[300px_auto] grid-cols-1">
       <div className="bg-mobile md:bg-desktop bg-cover flex flex-col gap-6 items-center p-6 relative">
         <h1 className="text-2xl text-white md:text-4xl">IP Adress Tracker</h1>
-        <IpSearch/>
+        <IpSearch ipDataRequest={ipData}/>
         <IpInfoContainer ipDataRequest={ipData}/>
       </div>
       <LeafletMap ipDataRequest={ipData}/>
