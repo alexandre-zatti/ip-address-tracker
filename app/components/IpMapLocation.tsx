@@ -2,20 +2,23 @@
 
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet"
-import { useContext } from "react";
-import { IpDataContext } from "@/app/components/IpDataProvider";
 import "leaflet/dist/leaflet.css"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
+import { IpData } from "@/app/types/IpData";
 
-const IpMapLocation = () => {
-  const {ipData} = useContext(IpDataContext)
+type IpMapLocationProps = {
+  ipDataRequest: { data: IpData; error: null; } | { data: null; error: any; }
+}
+
+const IpMapLocation = ({ipDataRequest}: IpMapLocationProps) => {
+  const ipData = ipDataRequest.data
 
   const marker = new Icon({iconUrl: "./icon-location.svg", iconSize: [38, 48]})
 
   return (
     <>
-      {ipData.latitude && (
+      {ipData && (
         <MapContainer center={[ipData.latitude, ipData.longitude]} zoom={15}
                       zoomControl={false} key={`${ipData.ip}`}>
           <TileLayer

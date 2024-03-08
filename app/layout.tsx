@@ -7,7 +7,7 @@ const rubik = Rubik({subsets: ["latin"], weight: ["400", "500", "600", "700", "8
 
 export const metadata: Metadata = {
   title: "Ip Adress Tracker",
-  description: "Stylish way to track some IP's",
+  description: "Stylish way to track IP's",
 };
 
 
