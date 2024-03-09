@@ -48,7 +48,8 @@ const getIpData = async (ip: string) => {
 export default async function Home({searchParams}: HomeProps) {
   const FALLBACK_IP_ADDRESS = '8.8.8.8'
   const forwardedFor = headers().get('x-forwarded-for')
-  const ipData = await getIpData(searchParams.ip ?? (forwardedFor ?? FALLBACK_IP_ADDRESS))
+  const ipAddress = searchParams.ip && searchParams.ip !== '' ? searchParams.ip : (forwardedFor ?? FALLBACK_IP_ADDRESS)
+  const ipData = await getIpData(ipAddress)
 
   return (
     <main className="min-h-screen grid grid-rows-[300px_auto] grid-cols-1">
