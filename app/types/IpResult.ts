@@ -16,13 +16,20 @@ export type IpData = {
   flag: string;
   emoji_flag: string;
   emoji_unicode: string;
-  asn: Asn;
+  asn: {
+    asn: string;
+    name: string;
+    domain: string | null;
+    route: string;
+    type: string;
+  };
 };
 
-type Asn = {
-  asn: string;
-  name: string;
-  domain: string | null;
-  route: string;
-  type: string;
+export type IpError = {
+  message: string
+}
+
+export type IpResult = {
+  data?: IpData;
+  error?: IpError;
 };
