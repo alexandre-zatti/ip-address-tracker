@@ -5,7 +5,6 @@ import Loading from "@/app/components/Loading";
 import { headers } from "next/headers";
 import { IpData, IpError, IpResult } from "@/app/types/IpResult";
 
-
 const LeafletMap = dynamic(
   () => import("@/app/components/IpMapLocation"),
   {
@@ -50,10 +49,6 @@ export default async function Home({searchParams}: Readonly<HomeProps>) {
 
   return (
     <main className="min-h-screen grid grid-rows-[300px_auto] grid-cols-1">
-      {/*{result.error && (*/}
-      {/*  <div>{result.error.message}</div>*/}
-      {/*)}*/}
-
       <div className="bg-mobile md:bg-desktop bg-cover flex flex-col gap-6 items-center p-6 relative">
         <h1 className="text-2xl text-white md:text-4xl">IP Adress Tracker</h1>
         <IpSearch ipDataResult={result}/>

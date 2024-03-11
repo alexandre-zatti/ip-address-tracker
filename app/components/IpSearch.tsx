@@ -1,8 +1,9 @@
 'use client'
 
-import { useTransition } from "react";
+import { useEffect, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { IpResult } from "@/app/types/IpResult";
+import { toast } from "react-toastify";
 
 type IpSearchProps = {
   ipDataResult: IpResult
@@ -12,6 +13,12 @@ export const IpSearch = ({ipDataResult}: IpSearchProps) => {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = useTransition()
+
+  useEffect(() => {
+    if (ipDataResult.error) {
+      toast.error(ipDataResult.error.message);
+    }
+  }, [ipDataResult.error]);
 
   const handleSubmit = (event: FormData) => {
     startTransition(() => {

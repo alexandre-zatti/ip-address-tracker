@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
+import ToastProvider from "@/app/contexts/ToastProvider";
 
 const rubik = Rubik({subsets: ["latin"], weight: ["400", "500", "600", "700", "800"]});
 
@@ -18,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={rubik.className}>{children}</body>
+    <body className={rubik.className}>
+    <ToastProvider>
+      {children}
+    </ToastProvider>
+    </body>
     </html>
   );
 }
