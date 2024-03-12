@@ -23,6 +23,7 @@ export const IpSearch = ({ipDataResult}: IpSearchProps) => {
   const handleSubmit = (event: FormData) => {
     startTransition(() => {
       router.push(`${pathname}?ip=${event.get('ip')}`);
+      router.refresh()
     })
   }
 
