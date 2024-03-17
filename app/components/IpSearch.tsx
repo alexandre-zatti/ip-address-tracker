@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useTransition } from "react";
+import { FormEvent, useEffect, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { IpResult } from "@/app/types/IpResult";
 import { toast } from "react-toastify";
@@ -20,16 +20,19 @@ export const IpSearch = ({ipDataResult}: IpSearchProps) => {
     }
   }, [ipDataResult.error]);
 
-  const handleSubmit = (event: FormData) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const ip = (event.currentTarget.elements.namedItem('ip') as HTMLInputElement).value
+
     startTransition(() => {
-      router.push(`${pathname}?ip=${event.get('ip')}`);
+      router.push(`${pathname}?ip=${ip}`);
       router.refresh()
     })
   }
 
   //TODO Checkout about aria acessible things to we know all about that aria stuff
   return (
-    <form className="flex w-11/12 h-12 md:max-w-xl md:h-14" action={handleSubmit}>
+    <form className="flex w-11/12 h-12 md:max-w-xl md:h-14" onSubmit={handleSubmit}>
       <input name='ip' className="w-full rounded-l-xl text-lg p-4 focus:outline-none hover:cursor-pointer"
              aria-label={'ip search name'} placeholder="Search for any IP adress..."
              defaultValue={ipDataResult.data?.ip}/>

@@ -6,6 +6,6 @@ import { IpResult as mockIpResult } from "@/app/mocks/fixtures/IpResult";
 
 describe('IpMapLocation', () => {
   it('should render the component', () => {
-    render(<IpMapLocation ipDataResult={mockIpResult}/>)
+    render(<IpMapLocation ipDataResult={{data: mockIpResult}}/>)
   });
 })
