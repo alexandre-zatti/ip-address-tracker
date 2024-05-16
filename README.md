@@ -2,7 +2,7 @@
 
 # 🌍 IP Address Tracker App
 
-This project is an implementation of the IP Address Tracker challenge from Frontend Mentor. It's built using Next.js, leveraging its latest features including server components to deliver an optimal user experience. This application allows users to view their IP address on a map, search for any IP addresses, and see key information and location data.
+This it's built using Next.js, leveraging its latest features including server components to deliver an optimal user experience. This application allows users to view their IP address on a map, search for any IP addresses, and see key information and location data.
 
 ## 🌟 Features
 
