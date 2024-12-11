@@ -12,7 +12,7 @@ This it's built using Next.js, leveraging its latest features including server c
 
 ## 🌐 Live Demo
 
-Experience the IP Address Tracker App in action at https://ip-adress-tracker-brown.vercel.app/.
+Experience the IP Address Tracker App in action at https://iptracker.zatti.tech
 
 ## 🛠 Technologies Used
 
@@ -22,6 +22,5 @@ Experience the IP Address Tracker App in action at https://ip-adress-tracker-bro
 
 ## 💖 Acknowledgments
 
- - A tip of the hat to Frontend Mentor for the challenge.
  - Kudos to LeafletJS for the mapping magic.
  - Thanks to IPData for the geolocation intelligence.
