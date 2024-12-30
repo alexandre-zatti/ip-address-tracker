@@ -1,4 +1,4 @@
-import { describe, it, Mock, vi } from "vitest";
+import { describe, expect, it, Mock, vi } from "vitest";
 import { render } from "@testing-library/react";
 import { IpSearch } from "@/app/components/IpSearch";
 import { IpResult as mockIpResult } from '@/app/mocks/fixtures/IpResult'
@@ -19,6 +19,8 @@ describe('IpSearch', () => {
   }))
 
   it('should render component without crashing', () => {
-    render(<IpSearch ipDataResult={{data: mockIpResult}}/>)
+    const { getByPlaceholderText } = render(<IpSearch ipDataResult={{data: mockIpResult}}/>)
+
+    expect(getByPlaceholderText('Search for any IP adress...')).toBeInTheDocument()
   });
 })

@@ -1,11 +1,16 @@
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { IpInfoContainer } from "@/app/components/IpInfoContainer";
 import { IpResult as mockIpResult } from "@/app/mocks/fixtures/IpResult";
-import { render } from "@testing-library/react";
+import { getByText, render } from "@testing-library/react";
 
 
 describe('IpInfoContainer', () => {
   it('should render the component', () => {
-    render(<IpInfoContainer ipDataResult={{data: mockIpResult}}/>)
+   const { getByText } = render(<IpInfoContainer ipDataResult={{data: mockIpResult}}/>)
+
+    expect(getByText('IP ADDRESS')).toBeInTheDocument()
+    expect(getByText('LOCATION')).toBeInTheDocument()
+    expect(getByText('COUNTRY')).toBeInTheDocument()
+    expect(getByText('ISP')).toBeInTheDocument()
   });
 })

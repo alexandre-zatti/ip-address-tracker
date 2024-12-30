@@ -16,7 +16,6 @@ const IpMapLocation = ({ipDataResult}: IpMapLocationProps) => {
   const latLng: LatLngExpression = [ipDataResult.data?.latitude ?? 1, ipDataResult.data?.longitude ?? 1]
 
   return (
-
     <MapContainer center={latLng} zoom={15}
                   zoomControl={false} key={`${ipDataResult.data?.ip}`}>
       <TileLayer

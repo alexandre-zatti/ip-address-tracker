@@ -30,7 +30,6 @@ export const IpSearch = ({ipDataResult}: IpSearchProps) => {
     })
   }
 
-  //TODO Checkout about aria acessible things to we know all about that aria stuff
   return (
     <form className="flex w-11/12 h-12 md:max-w-xl md:h-14" onSubmit={handleSubmit}>
       <input name='ip' className="w-full rounded-l-xl text-lg p-4 focus:outline-none hover:cursor-pointer"
