@@ -1,10 +1,7 @@
-import { describe, expect, it, Mock, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render } from "@testing-library/react";
 import { IpSearch } from "@/app/components/IpSearch";
 import { IpResult as mockIpResult } from '@/app/mocks/fixtures/IpResult'
-
-let isPendingMock = false;
-let startTransitionMock: Mock<[callback: any], void>;
 
 describe('IpSearch', () => {
 
